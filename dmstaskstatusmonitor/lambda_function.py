@@ -32,7 +32,7 @@ def lambda_handler(event, context):
             {
             'Name': 'replication-task-id',
             'Values': [
-                'arus-pdn-dms-task-registroscomp', 'arus-pdn-dms-task-regprop'
+                '', ''
                 ]
             },
         ]
@@ -43,15 +43,15 @@ def lambda_handler(event, context):
     for i in reptasks:
         if i.get('Status') == 'failed':
             responseNOK = clientSNS.publish(
-                TopicArn='arn:aws:sns:us-east-1:806254027366:arus-sns-alarm-dmsreplicationtasks',
-                Message='Fallo el proceso de replicación ' + i.get('ReplicationTaskIdentifier'),
-                Subject='Fallo el proceso de replicación ' + i.get('ReplicationTaskIdentifier')
+                TopicArn='',
+                Message='',
+                Subject=''
             )
 #        else:
 #            responseOK = clientSNS.publish(
-#                TopicArn='arn:aws:sns:us-east-1:806254027366:arus-sns-alarm-dmsreplicationtasks',
-#                Message='Proceso de replicacion ' + i.get('ReplicationTaskIdentifier') + ' está corriendo apropiadamente',
-#                Subject='Proceso de replicacion ' + i.get('ReplicationTaskIdentifier') + ' está corriendo apropiadamente'
+#                TopicArn='',
+#                Message='',
+#                Subject=''
 #            )
     
     return 'DMS replication task status checked.'
